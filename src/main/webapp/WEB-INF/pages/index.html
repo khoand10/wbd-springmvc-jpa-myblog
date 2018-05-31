@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>My Blog</h1>
+    <a href="/home/create">Create new blog</a><br>
+
+    <tr th:each="row :${list}">
+        Header<td><h2 th:text="${row.getHeader()}"></h2></td>
+        <td><p th:text="${row.getContent()}"></p></td>
+        Author<td><h4  th:text="${row.getAuthor()}"></h4></td>
+        <hr>
+    </tr>
+
+</body>
+</html>
