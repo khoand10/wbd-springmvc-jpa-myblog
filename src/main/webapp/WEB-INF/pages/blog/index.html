@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    .blogShort{ border-bottom:1px solid #ddd;}
+    .add{background: #333; padding: 10%; height: 300px;}
+
+
+    .btn-blog {
+        color: #ffffff;
+        background-color: #000066;
+        border-color: #000066;
+        border-radius:0;
+        margin-bottom:10px
+    }
+    .btn-blog:hover,
+    .btn-blog:focus,
+    .btn-blog:active,
+    .btn-blog.active,
+    .open .dropdown-toggle.btn-blog {
+        color: white;
+        background-color:#34ca78;
+        border-color: #34ca78;
+    }
+    h2{color:#34ca78;}
+    .margin10{margin-bottom:10px; margin-right:10px;}
+
+</style>
+</head>
+<body>
+    <h1>My Blog</h1>
+    <a href="/create">Create new blog</a><br>
+
+    <div class="container">
+
+        <div class="col-md-9 blogShort" th:each="blog : ${blogs}">
+            <h1 th:text="${blog.title}" />
+            <img src="http://www.kaczmarek-photo.com/wp-content/uploads/2012/06/DSC_4073-150x150.jpg" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+            <em>Category - <a  target="_blank" th:text="${blog.title}" /></em>
+            <article>
+                <p th:text="${blog.summary}" />
+            </article>
+            <a class="btn btn-blog pull-right marginBottom10" th:href="@{/read/__${blog.id}__}">READ MORE</a>
+        </div>
+        <div class="col-md-12 gap10"></div>
+    </div>
+    </div>
+
+</body>
+</html>

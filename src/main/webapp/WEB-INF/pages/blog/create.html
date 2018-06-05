@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/blog">back to list</a>
+<form th:action="@{/post}" th:object="${blog}"
+      method="POST" novalidate="novalidate">
+    <input type="hidden" th:field="*{id}"/>
+    <div>
+        <label>Header</label>
+        <input type="text" th:field="*{title}"/>
+    </div>
+    <div>
+        <label>About</label>
+        <input type="text" th:field="*{summary}"/>
+    </div>
+    <div>
+        <label>Content</label>
+        <textarea type="text" th:field="*{content}"/>
+    </div>
+
+    <select th:field="*{category}">
+        <option th:each="row:${categories}" th:value="${row.id}" th:text="${row.name}"></option>
+    </select>
+
+    <input type="submit" value="Post"></input>
+</form>
+<h3 style="color:red;" th:text="${message}"></h3>
+</body>
+</html>

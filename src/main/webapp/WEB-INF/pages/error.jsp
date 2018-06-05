@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>error</title>
 </head>
 <body>
-    <a href="/blog">Blog</a> <a href="/category">category</a>
+    <h1 style="color:red;">Error =))</h1>
 </body>
 </html>

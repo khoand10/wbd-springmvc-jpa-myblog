@@ -1,7 +1,9 @@
 package com.codegym.myblog;
 
-import com.codegym.myblog.service.MyblogService;
-import com.codegym.myblog.service.MyblogServiceImpl;
+import com.codegym.myblog.service.BlogService;
+import com.codegym.myblog.service.impl.BlogServiceImpl;
+import com.codegym.myblog.service.CategoryService;
+import com.codegym.myblog.service.impl.CategoryServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -48,8 +49,13 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     }
 
     @Bean
-    public MyblogService customerService(){
-        return new MyblogServiceImpl();
+    public BlogService customerService(){
+        return new BlogServiceImpl();
+    }
+
+    @Bean
+    public CategoryService categoryService(){
+        return new CategoryServiceImpl();
     }
 
 
@@ -58,7 +64,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/pages/");
+        templateResolver.setPrefix("/WEB-INF/pages");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
         return templateResolver;
@@ -74,6 +80,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     @Bean
     public ThymeleafViewResolver viewResolver(){
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setCharacterEncoding("UTF-8");
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
@@ -101,7 +108,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/myblog");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/myblog?useUnicode=yes&characterEncoding=UTF-8");
         dataSource.setUsername( "root" );
         dataSource.setPassword( "dangkhoa1997" );
         return dataSource;
@@ -121,8 +128,4 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return properties;
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addFormatter(new ProvinceFormatter(applicationContext.getBean(ProvinceService.class)));
-//    }
 }

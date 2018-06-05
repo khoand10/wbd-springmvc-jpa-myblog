@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index page</title>
+</head>
+<body>
+    <h1>Category Manager</h1>
+    <a href="/">Return index</a>
+    <a th:href="@{/category/create}">Create new</a>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        <tr th:each="row :${categories}">
+            <td th:text="${row.name}"></td>
+            <td><a th:href="@{/category/edit/__${row.id}__}">edit</a></td>
+            <td><a th:href="@{/category/delete/__${row.id}__}">delete</a></td>
+        </tr>
+    </table>
+</body>
+</html>

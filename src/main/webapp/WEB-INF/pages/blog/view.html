@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Page</title>
+</head>
+<body>
+    <a href="/blog">back to list</a> | <a th:href="@{/edit/__${blog.id}__}">Edit</a> | <a th:href="@{/delete/__${blog.id}__}">Remove</a>
+    <h1 th:text="${blog.title}" />
+    <p th:text="${blog.content}" />
+    Category: <a th:text="${blog.category.name}"/>
+</body>
+</html>
