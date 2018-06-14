@@ -1,9 +1,14 @@
 package com.codegym.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@JsonIgnoreProperties(value = {"blogs"})
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -15,12 +20,16 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private Set<Blog> blogs = new HashSet<>();
+    private List<Blog> blogs = new ArrayList<>();
 
     public Category(){
     }
 
-    public Category(String name, Set<Blog> blogs) {
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Category(String name, List<Blog> blogs) {
         this.name = name;
         this.blogs = blogs;
     }
@@ -41,11 +50,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Blog> getBlogs() {
+    public List<Blog> getBlogs() {
         return blogs;
     }
 
-    public void setBlogs(Set<Blog> blogs) {
+    public void setBlogs(List<Blog> blogs) {
         this.blogs = blogs;
     }
 }

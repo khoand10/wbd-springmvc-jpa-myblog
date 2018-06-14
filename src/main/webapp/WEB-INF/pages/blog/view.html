@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Blog Page</title>
+    <title>Edit post</title>
 </head>
 <body>
-    <a href="/blog">back to list</a> | <a th:href="@{/edit/__${blog.id}__}">Edit</a> | <a th:href="@{/delete/__${blog.id}__}">Remove</a>
-    <h1 th:text="${blog.title}" />
-    <p th:text="${blog.content}" />
-    Category: <a th:text="${blog.category.name}"/>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 th:text="${blog.title}"></h3> <a th:href="@{/edit/__${blog.id}__}">Edit</a> | <a th:href="@{/delete/__${blog.id}__}">Edit</a>
+            <div class="post-single-meta">
+                <span th:text="${blog.likes}"></span>
+            </div>
+            <div class="post-single-teaser" th:utext="${blog.summary}"></div>
+            <div class="post-single-feature">
+                <img th:src="@{/features/__${blog.image}__}"/>
+            </div>
+            <div class="post-single-content" th:utext="${blog.content}"></div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</section>
 </body>
 </html>

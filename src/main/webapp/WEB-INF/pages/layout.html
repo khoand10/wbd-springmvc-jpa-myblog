@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/bootstrap/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/bootstrap/summernote/summernote-bs4.css" rel="stylesheet" type="text/css" />
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Việt Nam</a>
+        <!-- menu -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/blog">Spring MVC Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/category" id="categoriesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                            <a class="dropdown-item" href="/category">List categories</a>
+                            <a class="dropdown-item" href="/category/create">Create category</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/blog" id="postsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Posts
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="postsDropdown">
+                            <a class="dropdown-item" href="/blog">List blog</a>
+                            <a class="dropdown-item" href="/create">Create post</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-pills">
+                    <a class="nav-link disabled" href="/"></a>
+                    </li>
+
+                    <!--<th:block th:if="${!session.user}">-->
+                    <!--<li class="nav-pills">-->
+                        <!--<a class="nav-link disabled" href="/">Login</a>-->
+                    <!--</li>-->
+                    <!--</th:block>-->
+
+                    <!--<th:block th:if="${session.user}">-->
+                    <li class="nav-item">
+                        Hello, <a class="nav-link disabled" href="/info"  th:text="${session.user.name}"></a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <!--end menu-->
+
+        <div class="jumbotron text-center">
+            <h1>Developer</h1>
+            <p>Hãy thu thập đủ các thiết bị desktop, mobile, tablet quanh xóm trước khi test</p>
+        </div>
+
+        <section layout:fragment="content">
+            <p>Your page content goes here</p>
+        </section>
+
+        <footer>
+            <p class="footer-copy">CodeGym@2018. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/bootstrap/js/popper.min.js"></script>
+    <script src="/bootstrap/summernote/summernote-bs4.min.js"></script>
+</body>
+</html>

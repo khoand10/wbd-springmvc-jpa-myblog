@@ -24,8 +24,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void save(Blog customer) {
-        blogRepository.save(customer);
+    public Blog save(Blog customer) {
+        return blogRepository.save(customer);
     }
 
     @Override

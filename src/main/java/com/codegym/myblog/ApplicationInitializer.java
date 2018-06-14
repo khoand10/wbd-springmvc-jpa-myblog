@@ -1,6 +1,9 @@
 package com.codegym.myblog;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -27,4 +30,5 @@ public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherSe
         characterEncodingFilter.setForceEncoding(true);
         return new CharacterEncodingFilter[] {characterEncodingFilter};
     }
+
 }

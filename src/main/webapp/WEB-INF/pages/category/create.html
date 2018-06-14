@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Create Page</title>
+    <title>Create post</title>
 </head>
 <body>
-    <h1>Category Manager</h1>
-    <a href="/category">back to list Category</a>
-    <form th:action="@{/category/save}" th:object="${category}" method="post">
-        <input type="hidden" th:field="*{id}">
-        Name:
-        <input th:field="*{name}" type="text">
-        <button>submit</button>
+<section layout:fragment="content">
+    <h1>Create category</h1>
+    <!--<th:block th:if="${message}">-->
+        <!--<p th:text="${message}"></p>-->
+    <!--</th:block>-->
+    <form th:object="${category}" method="post" th:action="@{/category/save}">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" th:field="*{name}" class="form-control"/>
+        </div>
+        <div>
+            <input type="submit" value="Create post">
+        </div>
     </form>
+</section>
 </body>
 </html>
